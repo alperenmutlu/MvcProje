@@ -35,12 +35,11 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult AddCategory(Category category)
         {
-            //cm.CategoryAddBL(category);
             CategoryValidator categoryValidator = new CategoryValidator();
             ValidationResult results = categoryValidator.Validate(category);
             if (results.IsValid)
             {
-                cm.CategoryAddBL(category);
+                cm.CategoryAdd(category);
                 return RedirectToAction("GetCategoryList");
             }
             else
